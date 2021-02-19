@@ -2,9 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Demo, { DemoPreview } from '~/components/demo';
+import Demo from '~/components/demo';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 import { LessonTip } from '~/components/lessons';
-import Highlight from '~/components/Highlight/Highlight';
 
 export default function ContentShifting() {
   const title = 'Content shifting';
@@ -33,30 +33,14 @@ export default function ContentShifting() {
             ,
             deci întreg conținutul se mută atunci când imaginea s-a încărcat complet.
           </p>
-          <DemoPreview>
-            <section>
-              <h2> Turnul Eiffel</h2>
-              <div style={{ display: 'flex' }}>
-                <img
-                  src="/api/demo/slow-image"
-                  style={{ marginRight: '1em', maxHeight: '250px' }}
-                  alt="Eiffel tower during night"
-                />
-                <p>
-                  Cel mai popular obiectiv turistic din Paris, capitala Franței.
-                </p>
-              </div>
-            </section>
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
 <section>
   <h2> Turnul Eiffel</h2>
   <div style="display: flex">
     <img 
-      src="/api/demo/slow-image" 
+      src="https://frontend.ro/api/demo/slow-image" 
       style="margin-right: 1em; max-height: 250px" 
       alt="Eiffel tower during night" />
     <p>

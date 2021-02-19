@@ -10,7 +10,13 @@ import FolderStructure from '~/services/utils/FolderStructure';
 import SweetAlertService from '~/services/sweet-alert/SweetAlert.service';
 import { MONACO } from '~/services/Constants';
 
-class MonacoBase extends React.Component<any, any> {
+interface Props extends MonacoBase {
+  onChange: (folderStructure?: FolderStructure) => void,
+  showFileSwitcher?: boolean,
+  [id: string]: any,
+}
+
+class MonacoBase extends React.Component<Props, any> {
   protected _baseModelChangeListener: any;
 
   protected editorRef: React.RefObject<HTMLDivElement>

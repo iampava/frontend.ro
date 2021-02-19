@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+
+.live-preview {
+  border-radius: 1em;
+  box-shadow: 0 0 1em color(#1b1b1b);
+  padding: 3em 1.5em 2em 1.5em;
+  box-sizing: content-box;
+  background: #282a36;
+  [class*=row] {
+    display: flex;
+  }
+  [class*=row] > div {
+    flex: 2;
+  }
+  [class*=row] iframe {
+    margin-left: 1em;
+  }
+  figcaption {
+    color: color(white);
+    position: relative;
+    bottom: -1vw;
+    left: 0;
+    font-size: 0.6em;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.live-preview > div p {
+  left: 0;
+}
+
+
+@media screen and (max-width: 1250px) {
+  .live-preview {
+    [class*=row] {
+      display: block;
+      iframe {
+        margin-left: 0;
+      }
+    }
+  }
+}

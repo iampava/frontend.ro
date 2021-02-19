@@ -11,6 +11,7 @@ import Lesson, {
 import { Diana } from '~/services/contributors';
 import Highlight from '~/components/Highlight/Highlight';
 import coverSvg from '~/public/images/lessons/text-elements__cover.svg';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 
 const contributors = [Diana];
 const chapters = [
@@ -89,9 +90,11 @@ export default function TextsLesson() {
             în pagină, pentru a arăta motoarelor de
             căutare care este subiectul principal al paginii.
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Toate cele 6 headinguri"
+            demo="/demo/html/titluri"
             code={`
 <h1> Texte | Lecție HTML </h1>`}
           />
@@ -119,12 +122,6 @@ export default function TextsLesson() {
             </Link>
             .
           </p>
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/headings.png"
-            alt="Toate cele 6 headinguri"
-            demo="/demo/html/titluri"
-          />
           <p>
             Atunci când realizăm structura unei pagini este bine să luăm în
             considerare câteva bune practici:
@@ -160,9 +157,11 @@ export default function TextsLesson() {
             . Vom folosi acest element pentru a insera paragrafe de text fără
             vreo proprietate sau înțeles special.
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Paragrafe și titluri"
+            demo="/demo/html/paragrafe-titluri"
             code={`
 <p> Acesta este un paragraf cu câteva cuvinte. </p>`}
           />
@@ -179,12 +178,6 @@ export default function TextsLesson() {
             </a>
             ). Același lucru se întâmplă și cu titlurile, după cum poți vedea în demo-ul de mai jos.
           </p>
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/paragraphs-and-headings.png"
-            alt="Paragrafe și titluri"
-            demo="/demo/html/paragrafe-titluri"
-          />
           <div className="dots" />
           <p>
             Dacă ai experimentat cu codul până acum, poate ai observat că dând
@@ -200,9 +193,11 @@ export default function TextsLesson() {
             </strong>
             .
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Elementul <br>"
+            demo="/demo/html/elementul-br"
             code={`
 <p>
   Azi am codat împreună cu <br>
@@ -211,12 +206,6 @@ export default function TextsLesson() {
   Antonia.
 </p>
             `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/line-break.png"
-            alt="Elementul <br>"
-            demo="/demo/html/elementul-br"
           />
         </section>
         <section>
@@ -234,20 +223,16 @@ export default function TextsLesson() {
             este un separator între
             secțiuni/elemente din pagină.
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Elementul <hr> (horizontal-line)"
+            demo="/demo/html/elementul-hr"
             code={`
 <p> O primă regulă în această casă: Întotdeauna zâmbește! </p>
 <hr>
 <p> A doua regulă: Vino cu prăjituri! </p>
             `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/horizontal-line.png"
-            alt="Elementul <hr> (horizontal-line)"
-            demo="/demo/html/elementul-hr"
           />
         </section>
         <section>
@@ -262,9 +247,11 @@ export default function TextsLesson() {
             .
             Acest tag vine la pachet cu o indentare default.
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Citate"
+            demo="/demo/html/citate"
             code={`
 <blockquote 
   cite="https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step"
@@ -279,24 +266,6 @@ export default function TextsLesson() {
             <strong className="formatted">{'<q>'}</strong>
             (quote).
           </p>
-          <Highlight
-            className="my-5"
-            language="html"
-            code={`
-<p>
-  După cum a spus Roosevelt, 
-  <q cite="https://www.goodreads.com/quotes/10002-it-is-hard-to-fail-but-it-is-worse-never">
-    It is hard to fail, but it is worse never to have tried to succeed.
-  </q>
-</p>       
-            `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/quotes.png"
-            alt="Citate"
-            demo="/demo/html/citate"
-          />
           <LessonTip>
             După cum poți observa mai sus, ambele elemente au atributul
             {' '}

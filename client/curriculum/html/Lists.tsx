@@ -12,6 +12,7 @@ import Lesson, {
 import { Diana } from '~/services/contributors';
 import Highlight from '~/components/Highlight/Highlight';
 import coverSvg from '~/public/images/lessons/lists__cover.svg';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 
 const contributors = [Diana];
 const chapters = [
@@ -91,9 +92,11 @@ export default function ListsLesson() {
             Sunt utilizate cînd un set de elemente pot fi folosite în orice
             ordine, ca în lista de cumpărături de mai jos:
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Listă neordonată"
+            demo="/demo/html/liste-neordonate"
             code={`
 <ul>
   <li> pâine </li>
@@ -102,12 +105,6 @@ export default function ListsLesson() {
   <li> unt </li>
 </ul>
 `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/liste-neordonate.png"
-            alt="Listă neordonată"
-            demo="/demo/html/liste-neordonate"
           />
           <LessonTip>
             Observă cum ne folosim de 2 tipuri de elemente pentru a defini o
@@ -160,9 +157,11 @@ export default function ListsLesson() {
             romane sau litere. Un exemplu potrivit ar fi instrucțiunile pentru a
             găti o prăjitură:
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Listă ordonată"
+            demo="/demo/html/liste-ordonate"
             code={`
 <ol>
   <li> Cumpără ingredientele necesare </li>
@@ -183,12 +182,6 @@ export default function ListsLesson() {
             evident că dacă vom schimba ordinea elementelor din cadrul listei,
             aceasta nu va mai avea nici un sens.
           </p>
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/liste-ordonate.png"
-            alt="Listă ordonată"
-            demo="/demo/html/liste-ordonate"
-          />
         </section>
         <section>
           <LessonHeading as="h3" id="atributele-acceptate-de-listele-ordonate">
@@ -234,9 +227,11 @@ export default function ListsLesson() {
               litere mici, respectiv mari.
             </li>
           </ul>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Atributul 'type' pentru liste ordonate"
+            demo="/demo/html/atributul-type-pentru-liste-ordonate"
             code={`
 <ol type="I">
   <li> Pornește laptopul </li>
@@ -244,12 +239,6 @@ export default function ListsLesson() {
   <li> Începe să codezi </li>
 </ol>
 `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/atributul-type-pentru-liste-ordonate.png"
-            alt="Atributul 'type' pentru liste ordonate"
-            demo="/demo/html/atributul-type-pentru-liste-ordonate"
           />
           <p>
             Dacă vrem ca lista să înceapă enumerarea de la cifra/litera cea mai
@@ -259,11 +248,18 @@ export default function ListsLesson() {
             {' '}
             .
           </p>
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/atributul-reversed-pentru-liste-ordonate.png"
+          <LivePreviewDemo
+            className="row"
             alt="Atributul 'reversed' pentru liste ordonate"
             demo="/demo/html/atributul-reversed-pentru-liste-ordonate"
+            language="html"
+            code={`
+<ol reversed type="A">
+  <li> Pornește laptopul </li>
+  <li> Deschide Visual Studio Code </li>
+  <li> Începe să codezi </li>
+</ol>  
+            `}
           />
           <p>
             Putem opta chiar să enumerăm elementele unei liste ordonate începând
@@ -274,11 +270,23 @@ export default function ListsLesson() {
             dând ca valoare numărul
             sau litera de la care vrem sa începem numărătoarea:
           </p>
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/atributul-start-pentru-liste-ordonate.png"
+          <LivePreviewDemo
+            className="row"
             alt="Atributul 'start' pentru liste ordonate"
             demo="/demo/html/atributul-start-pentru-liste-ordonate"
+            language="html"
+            code={`
+ <ol>
+  <li> Pornește laptopul </li>
+  <li> Deschide Visual Studio Code </li>
+  <li> Începe să codezi </li>
+</ol>
+<p> După ce ai terminat nu uita să:</p>
+<ol start="4">
+  <li> Dai 'push' pe GitHub </li>
+  <li> Arăți rezultatul prietenilor tăi! </li>
+</ol>
+`}
           />
         </section>
         <section>
@@ -289,9 +297,11 @@ export default function ListsLesson() {
             O listă poate conține o altă listă. Acest lucru este foarte util
             dacă vrem să reprezentăm un meniu de navigare pe mai multe nivele:
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
+            className="row"
             language="html"
+            alt="Sub-liste"
+            demo="/demo/html/sub-liste"
             code={`
 <ol>
   <li> 
@@ -306,12 +316,6 @@ export default function ListsLesson() {
   <li> Mobile development </li>
 </ol>
 `}
-          />
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/sub-liste.png"
-            alt="Sub-liste"
-            demo="/demo/html/sub-liste"
           />
           <p>
             În exemplul de mai sus am inclus o listă ordonată în cadrul
@@ -335,7 +339,10 @@ export default function ListsLesson() {
             Îl vom folosi când definim termeni sau asociem perechi de valori, ca
             în exemplul de mai jos:
           </p>
-          <Highlight
+          <LivePreviewDemo
+            className="row"
+            alt="Liste de descrieri"
+            demo="/demo/html/liste-de-descrieri"
             language="html"
             code={`
 <dl>
@@ -345,13 +352,6 @@ export default function ListsLesson() {
   <dt> CSS </dt>
   <dd> Cascading Style Sheets </dd>
 </dl>`}
-          />
-
-          <LessonFigure
-            withBorder
-            src="https://d3tycb976jpudc.cloudfront.net/demo-assets/liste-de-descrieri.png"
-            alt="Liste de descrieri"
-            demo="/demo/html/liste-de-descrieri"
           />
 
           <div className="dots" />

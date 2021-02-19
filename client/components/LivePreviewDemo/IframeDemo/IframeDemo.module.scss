@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.iframe {
+  background: repeating-linear-gradient(-45deg, #f8f8f8, #f8f8f8 5px, #ebebeb 0, #ebebeb 10px);
+  border: 1px solid color(silver);
+  padding: 1em;
+  margin-top: 0.5em;
+  border-radius: 1em;
+  width: calc(100% - 2em);
+  flex: 1;
+  box-sizing: content-box;
+}

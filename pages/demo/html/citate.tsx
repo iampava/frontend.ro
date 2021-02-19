@@ -1,10 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Demo, { DemoPreview } from '~/components/demo';
+import Demo from '~/components/demo';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
+
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Highlight from '~/components/Highlight/Highlight';
 
 export default function Quotes() {
   const title = 'Citate';
@@ -32,22 +33,7 @@ export default function Quotes() {
             {' '}
             pentru a marca citate.
           </p>
-          <DemoPreview>
-            <blockquote
-              cite="https://en.wikipedia.org/wiki/A_journey_of_a_thousand_miles_begins_with_a_single_step"
-            >
-              <p> Călătoria de 1000 mile începe cu un singur pas. </p>
-            </blockquote>
-            <hr />
-            <p>
-              După cum a spus Roosevelt,
-              <q cite="https://www.goodreads.com/quotes/10002-it-is-hard-to-fail-but-it-is-worse-never">
-                It is hard to fail, but it is worse never to have tried to succeed.
-              </q>
-            </p>
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
 <blockquote

@@ -2,11 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
-import Demo, { DemoPreview } from '~/components/demo';
+import Demo from '~/components/demo';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Highlight from '~/components/Highlight/Highlight';
 import { LessonTip } from '~/components/lessons';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 
 export default function FixedGallery() {
   const title = 'O galerie de imagini în care fiecare ocupa 45% din lățimea disponibilă';
@@ -24,39 +24,7 @@ export default function FixedGallery() {
       <>
         <Header demoPage />
         <Demo title={title}>
-          <DemoPreview>
-            <div style={{
-              display: 'flex',
-              flexFlow: 'row wrap',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-            }}
-            >
-              <img
-                style={{ width: '45%', marginBottom: '2em' }}
-                src="https://d3tycb976jpudc.cloudfront.net/demo-assets/body-of-water-and-trees.jpg"
-                alt="Body of water and trees"
-              />
-              <img
-                style={{ width: '45%', marginBottom: '2em' }}
-                src="https://d3tycb976jpudc.cloudfront.net/demo-assets/alpaca-portrait.jpg"
-                alt="Alpaca portrait"
-              />
-              <img
-                style={{ width: '45%' }}
-                src="https://d3tycb976jpudc.cloudfront.net/demo-assets/lion-portrait.jpg"
-                alt="Lion portrait"
-              />
-              <img
-                style={{ width: '45%' }}
-                src="https://d3tycb976jpudc.cloudfront.net/demo-assets/snow-capped-mountains.jpg"
-                alt="Snow capped mountains"
-              />
-
-            </div>
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
 <div style="display: flex; flex-flow: row wrap; justify-content: space-between; align-items: flex-start;">
@@ -79,6 +47,7 @@ export default function FixedGallery() {
     src="https://d3tycb976jpudc.cloudfront.net/demo-assets/snow-capped-mountains.jpg"
     alt="Snow capped mountains" 
     style="width: 45%" />
+    
 </div>`}
           />
           <LessonTip icon={faQuestionCircle}>

@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Demo, { DemoPreview } from '~/components/demo';
-import Highlight from '~/components/Highlight/Highlight';
+import Demo from '~/components/demo';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 
 export default function HugeImageLoading() {
   const title = 'Încărcarea greoaie a unei imagini 4K';
@@ -37,19 +37,11 @@ export default function HugeImageLoading() {
             {' '}
             și încetinește conexiunea, iar apoi refreshuiește pagina.
           </p>
-          <DemoPreview>
-            <img
-              src="https://d3tycb976jpudc.cloudfront.net/demo-assets/red_bycicle__high.jpg"
-              style={{ maxWidth: '100%' }}
-              alt="Red bycicle wheel"
-            />
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
 <img 
-  src="/red_bycicle__high.jpg" 
+  src="https://d3tycb976jpudc.cloudfront.net/demo-assets/red_bycicle__high.jpg" 
   style="max-width: 100%" 
   alt="Red bycicle wheel" 
 />`}

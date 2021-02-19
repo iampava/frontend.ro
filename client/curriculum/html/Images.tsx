@@ -15,6 +15,7 @@ import { Pava } from '~/services/contributors';
 import Highlight from '~/components/Highlight/Highlight';
 import SideBySidePictures from '~/components/SideBySidePictures';
 import coverSvg from '~/public/images/lessons/images__cover.svg';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
 
 const contributors = [Pava];
 const chapters = [
@@ -177,12 +178,12 @@ export default function ImagesLesson() {
             {' '}
             -ul paginii.
           </p>
-          <LessonFigure
+          {/* <LessonFigure
             withBorder
             src="https://d3tycb976jpudc.cloudfront.net/demo-assets/fixed-size-image.png"
             alt="Imagine cu dimensiunile fixe"
             demo="/demo/html/imagine-cu-dimensiuni-fixe"
-          />
+          /> */}
           <p>
             În astfel de cazuri, în care
             {' '}
@@ -196,16 +197,25 @@ export default function ImagesLesson() {
             <strong> height </strong>
             .
           </p>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
+            className="row"
+            alt="Imagine cu dimensiunile fixe"
+            demo="/demo/html/imagine-cu-dimensiuni-fixe"
             code={`
-<img 
-  src="logo.png" 
-  width="212" 
-  height="70"
-  alt="FrontEnd.ro logo" 
-/>`}
+  <header style="
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+">
+  <img 
+    height="70"
+    width="212" 
+    src="https://FrontEnd.ro/logo.png" 
+    alt="FrontEnd.ro logo" 
+  />
+  <h2> Home </h2>
+</header>`}
           />
           <p>
             Astfel, browser-ul va ști dimensiunile imaginii înainte de a o descărca

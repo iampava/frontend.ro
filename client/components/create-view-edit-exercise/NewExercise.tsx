@@ -166,6 +166,7 @@ function NewExercise({ user }: ConnectedProps<typeof connector>) {
   };
 
   return (
+
     <div>
       <section className={`${styles.cta} relative`}>
         <div>

@@ -1,10 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Demo, { DemoPreview } from '~/components/demo';
+import Demo from '~/components/demo';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
+
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Highlight from '~/components/Highlight/Highlight';
 
 export default function OrderedListsStart() {
   const title = 'Atributul \'start\' pentru liste ordonate';
@@ -29,20 +30,7 @@ export default function OrderedListsStart() {
             {' '}
             dând ca valoare numărul/litera de la care vrem să începem numărătoarea:
           </p>
-          <DemoPreview>
-            <ol>
-              <li> Pornește laptopul </li>
-              <li> Deschide Visual Studio Code </li>
-              <li> Începe să codezi </li>
-            </ol>
-            <p> După ce ai terminat nu uita să:</p>
-            <ol start={4}>
-              <li> Dai 'push' pe GitHub </li>
-              <li> Arăți rezultatul prietenilor tăi! </li>
-            </ol>
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
  <ol>

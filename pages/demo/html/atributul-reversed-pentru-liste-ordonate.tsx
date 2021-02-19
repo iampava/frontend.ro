@@ -1,10 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Demo, { DemoPreview } from '~/components/demo';
+import Demo from '~/components/demo';
+import LivePreviewDemo from '~/components/LivePreviewDemo';
+
 import Header from '~/components/Header';
 import Footer from '~/components/Footer';
-import Highlight from '~/components/Highlight/Highlight';
 
 export default function OrderedListsReversed() {
   const title = 'Atributul \'reversed\' pentru liste ordonate';
@@ -24,15 +25,7 @@ export default function OrderedListsReversed() {
         <Demo title={title}>
           <p />
 
-          <DemoPreview>
-            <ol reversed type="A">
-              <li> Pornește laptopul </li>
-              <li> Deschide Visual Studio Code </li>
-              <li> Începe să codezi </li>
-            </ol>
-          </DemoPreview>
-          <Highlight
-            className="my-5"
+          <LivePreviewDemo
             language="html"
             code={`
 <ol reversed type="A">
