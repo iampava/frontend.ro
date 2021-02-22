@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+
+.account-notifications-tooltip {
+  position: relative;
+  padding-right: 1em;
+
+  button {
+    background: none;
+    cursor: pointer;
+  }
+  .unread-badge {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    right: 1.5em;
+    height: 1.5em;
+    min-width: 1.5em;
+    border-radius: 50%;
+    background-color: color(red);
+    line-height: 0.5em;
+    padding: 0.5em 0 0 0.1em;
+  }
+}
+

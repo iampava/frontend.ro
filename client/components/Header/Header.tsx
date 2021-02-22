@@ -6,6 +6,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { connect, ConnectedProps } from 'react-redux';
 import styles from './Header.module.scss';
 import AccountTooltip from './AccountTooltip/AccountTooltip';
+import AccountNotificationsTooltip from './AccountNotificationsTooltip/AccountNotificationsTooltip';
+
 import { RootState } from '~/redux/root.reducer';
 
 interface Props {
@@ -41,9 +43,12 @@ function Header({
         </p>
         )}
       </div>
-      <div>
-        {isLoggedIn ? <AccountTooltip /> : null }
-      </div>
+      {isLoggedIn ? (
+        <div className="d-flex align-items-center justify-content-between">
+          <AccountNotificationsTooltip />
+          <AccountTooltip />
+        </div>
+      ) : null}
     </header>
   );
 }

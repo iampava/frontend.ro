@@ -4,7 +4,7 @@ import { USER_INFO, USER_NOTIFICATIONS } from './user.actions';
 export const defaultUserState = {
   info: undefined,
   notifications: {
-    list: undefined, unread: 0, unreadCount: 0, page: 0, end: false,
+    list: undefined, unread: 0, unreadCount: 2, page: 0, end: false,
   },
 };
 

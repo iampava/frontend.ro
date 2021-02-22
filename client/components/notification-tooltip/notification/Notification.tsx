@@ -28,7 +28,7 @@ const Notification = ({
   onMarkAsRead,
 }: Props) => (
   <li
-    className={`${styles.notification} ${isUnread ? styles['is--unread'] : ''} text-xs`}
+    className={`${styles.notification} ${isUnread ? styles['is--unread'] : ''}`}
     onClick={() => onMarkAsRead(_id)}
     role="presentation"
   >

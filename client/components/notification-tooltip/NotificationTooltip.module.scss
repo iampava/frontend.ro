@@ -1,26 +1,22 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .notification-tooltip {
-  max-width: 20em;
-  border: 5px solid black;
-  
+  min-width: 20em;
+  position: absolute;
+  right: 0;
+  border: 1px solid #bcc2c6;
+  box-shadow: 0 0 1px #77838b;
+  background-color: color(white);
+  z-index: 11;
+
+  .icon {
+    padding: 0.5em 0 0 0.5em;
+  }
+
   ul {
     height: 15em;
     overflow-y: auto;
   }
-}
-
-.unread-badge {
-  position: absolute;
-  top: 0;
-  transform: translateY(-50%);
-  right: -0.5em;
-  height: 1.5em;
-  min-width: 1.5em;
-  border-radius: 50%;
-  background-color: color(red);
-  line-height: 0.5em;
-  padding: 0.5em 0 0 0.1em;
 }
 
 .mark-all-as-read-btn {
@@ -32,5 +28,11 @@
   &:hover {
     font-weight: bold;
     color: color(blue);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .notification-tooltip {
+    right: -3.5em;
   }
 }

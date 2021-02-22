@@ -140,14 +140,8 @@ class NotificationsTooltip extends React.Component<
       <div className={`${styles['notification-tooltip']}`}>
         <div className={styles.icon}>
           <FontAwesomeIcon width="16" icon={loading ? faSpinner : faBell} />
-          {user.notifications.unreadCount > 0 && (
-            <span className={`${styles['unread-badge']} text-white text-center text-xs`}>
-              {user.notifications.unreadCount}
-            </span>
-          )}
         </div>
         {isOpen && (
-
           <ul className={styles.notifications}>
             <li className="text-right">
               <button
