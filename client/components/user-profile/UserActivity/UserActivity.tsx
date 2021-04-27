@@ -67,7 +67,7 @@ function UserActivity({ profileUser, currentUser }: ConnectedProps<typeof connec
             exercise={submission.exercise}
             href={`rezolva/${submission.exercise._id}`}
             viewMode="STUDENT"
-            feedbackCount={submission.feedbacks.filter(f => f.type === 'improvement').length}
+            feedbackCount={submission.feedbacks.filter((f) => f.type === 'improvement').length}
             isApproved={submission.status === SUBMISSION_STATUS.DONE}
             readOnly={[
               SUBMISSION_STATUS.AWAITING_REVIEW,

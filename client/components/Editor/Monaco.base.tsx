@@ -5,7 +5,11 @@ import React from 'react';
 import noop from 'lodash/noop';
 import * as Monaco from './monaco';
 import SubmissionService from '~/services/Submission.service';
-import { extractExtension, filesToFolderStructure, fsEntriesToFolderStructure } from '~/services/utils/FileUtils';
+import {
+  extractExtension,
+  filesToFolderStructure,
+  fsEntriesToFolderStructure,
+} from '~/services/utils/FileUtils';
 import FolderStructure from '~/services/utils/FolderStructure';
 import SweetAlertService from '~/services/sweet-alert/SweetAlert.service';
 import { MONACO } from '~/services/Constants';
@@ -13,7 +17,7 @@ import { MONACO } from '~/services/Constants';
 class MonacoBase extends React.Component<any, any> {
   protected _baseModelChangeListener: any;
 
-  protected editorRef: React.RefObject<HTMLDivElement>
+  protected editorRef: React.RefObject<HTMLDivElement>;
 
   protected editor: any;
 
@@ -57,7 +61,9 @@ class MonacoBase extends React.Component<any, any> {
           this.toggleFit(true);
 
           this._baseModelChangeListener.dispose();
-          this._baseModelChangeListener = this.editor.onDidChangeModelContent(this.onModelChange);
+          this._baseModelChangeListener = this.editor.onDidChangeModelContent(
+            this.onModelChange,
+          );
         }
       },
     );
@@ -66,7 +72,10 @@ class MonacoBase extends React.Component<any, any> {
   componentDidUpdate(prevProps) {
     const { folderStructure: folderStructureProp, readOnly } = this.props;
 
-    if (JSON.stringify(prevProps.folderStructure) !== JSON.stringify(folderStructureProp)) {
+    if (
+      JSON.stringify(prevProps.folderStructure)
+      !== JSON.stringify(folderStructureProp)
+    ) {
       const folderStructure = new FolderStructure(folderStructureProp);
       const firstFile = folderStructure.files[0];
 
@@ -112,7 +121,8 @@ class MonacoBase extends React.Component<any, any> {
   getScroll(type) {
     if (type === 'TOP') {
       return this.editor.getScrollTop();
-    } if (type === 'LEFT') {
+    }
+    if (type === 'LEFT') {
       return this.editor.getScrollLeft();
     }
   }
@@ -123,7 +133,7 @@ class MonacoBase extends React.Component<any, any> {
 
   formatCode = () => {
     return Monaco.formatCode(this.editor);
-  }
+  };
 
   updateLanguageBasedOnFileName(name) {
     const extension = extractExtension(name);
@@ -132,7 +142,7 @@ class MonacoBase extends React.Component<any, any> {
     Monaco.setModelLanguage(this.editor.getModel(), language);
   }
 
-  createFirstFile = ({ name }: {name: string}) => {
+  createFirstFile = ({ name }: { name: string }) => {
     const { folderStructure } = this.state;
 
     let newFileKey = folderStructure.addFile(null, { name });
@@ -147,11 +157,13 @@ class MonacoBase extends React.Component<any, any> {
           this.toggleFit(true);
 
           this._baseModelChangeListener.dispose();
-          this._baseModelChangeListener = this.editor.onDidChangeModelContent(this.onModelChange);
+          this._baseModelChangeListener = this.editor.onDidChangeModelContent(
+            this.onModelChange,
+          );
         }
       },
     );
-  }
+  };
 
   onFileAdd = (parentKey, file, cb = noop) => {
     const { folderStructure } = this.state;
@@ -161,7 +173,7 @@ class MonacoBase extends React.Component<any, any> {
       cb();
       this.notifyStructureChange();
     });
-  }
+  };
 
   onFolderAdd = (parentKey, folder, cb = noop) => {
     const { folderStructure } = this.state;
@@ -171,7 +183,7 @@ class MonacoBase extends React.Component<any, any> {
       cb();
       this.notifyStructureChange();
     });
-  }
+  };
 
   onFileSelect = (key) => {
     this.setState({ selectedFileKey: key });
@@ -186,7 +198,9 @@ class MonacoBase extends React.Component<any, any> {
     this.setValue(file.content);
     this.updateLanguageBasedOnFileName(file.name);
 
-    this._baseModelChangeListener = this.editor.onDidChangeModelContent(this.onModelChange);
+    this._baseModelChangeListener = this.editor.onDidChangeModelContent(
+      this.onModelChange,
+    );
 
     if (this.Feedbacks && this.decorate && feedbacks) {
       this.Feedbacks.undecorateAll();
@@ -195,7 +209,7 @@ class MonacoBase extends React.Component<any, any> {
         .filter((f) => f.file_key === file.key)
         .forEach((f) => this.decorate(f.getDecorationData()));
     }
-  }
+  };
 
   onFileRename = (key, name) => {
     const { folderStructure } = this.state;
@@ -209,7 +223,7 @@ class MonacoBase extends React.Component<any, any> {
     } catch (err) {
       SweetAlertService.toast({ type: 'error', text: err });
     }
-  }
+  };
 
   onFolderRename = (key, name) => {
     const { folderStructure } = this.state;
@@ -220,12 +234,15 @@ class MonacoBase extends React.Component<any, any> {
     } catch (err) {
       SweetAlertService.toast({ type: 'error', text: err });
     }
-  }
+  };
 
   onFileDelete = async (key) => {
     const { folderStructure, selectedFileKey } = this.state;
 
-    if (this.Feedbacks && this.Feedbacks.getAll().find((f) => f.file_key === key)) {
+    if (
+      this.Feedbacks
+      && this.Feedbacks.getAll().find((f) => f.file_key === key)
+    ) {
       try {
         await this.confirmFileDelete(key);
       } catch (err) {
@@ -245,7 +262,7 @@ class MonacoBase extends React.Component<any, any> {
     } catch (err) {
       SweetAlertService.toast({ type: 'error', text: err });
     }
-  }
+  };
 
   confirmFileDelete(key) {
     return new Promise<void>((resolve, reject) => {
@@ -254,12 +271,15 @@ class MonacoBase extends React.Component<any, any> {
         text: 'Urmează să ștergi un fișier ce conține feedback. Ești sigur?',
         confirmButtonText: 'Continuă',
         preConfirm: () => {
-          const feedbacksInFile = this.Feedbacks.getAll().filter((f) => f.file_key === key);
+          const feedbacksInFile = this.Feedbacks.getAll().filter(
+            (f) => f.file_key === key,
+          );
           SweetAlertService.toggleLoading();
-          return Promise.all(feedbacksInFile.map((f) => SubmissionService.markFeedbackAsDone(f._id)))
-            .then((resp) => {
-              resp.forEach((_, index) => this.onFeedbackDone(feedbacksInFile[index].id));
-            });
+          return Promise.all(
+            feedbacksInFile.map((f) => SubmissionService.markFeedbackAsDone(f._id)),
+          ).then((resp) => {
+            resp.forEach((_, index) => this.onFeedbackDone(feedbacksInFile[index].id));
+          });
         },
       }).then((result) => {
         if (result.isConfirmed) {
@@ -275,7 +295,11 @@ class MonacoBase extends React.Component<any, any> {
     const { folderStructure, selectedFileKey } = this.state;
     const { folder } = folderStructure.getFolder(key);
 
-    if (this.Feedbacks.getAll().find((f) => !!folderStructure.getFile(f.file_key, folder).file)) {
+    if (
+      this.Feedbacks.getAll().find(
+        (f) => !!folderStructure.getFile(f.file_key, folder).file,
+      )
+    ) {
       try {
         await this.confirmFolderDelete(key);
       } catch (err) {
@@ -302,7 +326,7 @@ class MonacoBase extends React.Component<any, any> {
     } catch (err) {
       SweetAlertService.toast({ type: 'error', text: err });
     }
-  }
+  };
 
   confirmFolderDelete(key) {
     const { folderStructure } = this.state;
@@ -314,15 +338,16 @@ class MonacoBase extends React.Component<any, any> {
         text: 'Urmează să ștergi un folder ce conține fișiere cu feedback.',
         confirmButtonText: 'Continuă',
         preConfirm: () => {
-          const feedbacksInFolder = this.Feedbacks
-            .getAll()
-            .filter((f) => folderStructure.getFile(f.file_key, folder).file);
+          const feedbacksInFolder = this.Feedbacks.getAll().filter(
+            (f) => folderStructure.getFile(f.file_key, folder).file,
+          );
 
           SweetAlertService.toggleLoading();
-          return Promise.all(feedbacksInFolder.map((f) => SubmissionService.markFeedbackAsDone(f._id)))
-            .then((resp) => {
-              resp.forEach((_, index) => this.onFeedbackDone(feedbacksInFolder[index].id));
-            });
+          return Promise.all(
+            feedbacksInFolder.map((f) => SubmissionService.markFeedbackAsDone(f._id)),
+          ).then((resp) => {
+            resp.forEach((_, index) => this.onFeedbackDone(feedbacksInFolder[index].id));
+          });
         },
       }).then((result) => {
         if (result.isConfirmed) {
@@ -337,7 +362,7 @@ class MonacoBase extends React.Component<any, any> {
   onDownload = () => {
     const { folderStructure } = this.state;
     return folderStructure.downloadAsZip();
-  }
+  };
 
   getFolderStructure = () => {
     const { folderStructure } = this.state;
@@ -345,7 +370,7 @@ class MonacoBase extends React.Component<any, any> {
       return folderStructure.toJSON();
     }
     return null;
-  }
+  };
 
   onResize = (fileSwitcherWidth) => {
     this.setState({ fileSwitcherWidth }, () => {
@@ -353,7 +378,7 @@ class MonacoBase extends React.Component<any, any> {
         this.editor.layout();
       }
     });
-  }
+  };
 
   onAllChanges(cb) {
     let cursorListener = this.editor.onDidChangeCursorPosition((e) => cb({
@@ -414,7 +439,7 @@ class MonacoBase extends React.Component<any, any> {
     if (typeof onStructureChange === 'function') {
       onStructureChange(this.getFolderStructure());
     }
-  }
+  };
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -434,8 +459,13 @@ class MonacoBase extends React.Component<any, any> {
 
     let computeFolderStructure = null;
 
-    if (nativeEvent.target.webkitEntries && nativeEvent.target.webkitEntries.length) {
-      computeFolderStructure = fsEntriesToFolderStructure(nativeEvent.target.webkitEntries);
+    if (
+      nativeEvent.target.webkitEntries
+      && nativeEvent.target.webkitEntries.length
+    ) {
+      computeFolderStructure = fsEntriesToFolderStructure(
+        nativeEvent.target.webkitEntries,
+      );
     } else {
       computeFolderStructure = filesToFolderStructure(nativeEvent.target.files);
     }
@@ -456,12 +486,14 @@ class MonacoBase extends React.Component<any, any> {
             this.toggleFit(true);
 
             this._baseModelChangeListener.dispose();
-            this._baseModelChangeListener = this.editor.onDidChangeModelContent(this.onModelChange);
+            this._baseModelChangeListener = this.editor.onDidChangeModelContent(
+              this.onModelChange,
+            );
           }
         },
       );
     });
-  }
+  };
 
   toggleFit = (force = undefined) => {
     console.log('TOGGLE FIT');
@@ -471,13 +503,14 @@ class MonacoBase extends React.Component<any, any> {
     // let fixedHeight: any = false;
     // if (!fixedHeightState || force === true) {
     //   // eslint-disable-next-line max-len
-    //   fixedHeight = this.editor.getModel().getLineCount() * this.editor.getConfiguration().lineHeight;
+    //   fixedHeight = this.editor.getModel().getLineCount() *
+    // this.editor.getConfiguration().lineHeight;
     // }
 
     // this.setState({ fixedHeight: Math.max(editorElHeight, fixedHeight) }, () => {
     //   this.editor.layout();
     // });
-  }
+  };
 
   // DragNDrop
   onDragEnter = (e) => {
@@ -491,7 +524,7 @@ class MonacoBase extends React.Component<any, any> {
     this.setState({
       isDropable: true,
     });
-  }
+  };
 
   onDragLeave = (e) => {
     const { readOnly } = this.props;
@@ -506,7 +539,7 @@ class MonacoBase extends React.Component<any, any> {
         isDropable: false,
       });
     }
-  }
+  };
 
   onReplace = (e) => {
     e.persist();
@@ -523,11 +556,11 @@ class MonacoBase extends React.Component<any, any> {
 
         SweetAlertService.toggleLoading();
 
-        return Promise
-          .all(allFeedbacks.map((f) => SubmissionService.markFeedbackAsDone(f._id)))
-          .then((resp) => {
-            resp.forEach((_, index) => this.onFeedbackDone(allFeedbacks[index].id));
-          });
+        return Promise.all(
+          allFeedbacks.map((f) => SubmissionService.markFeedbackAsDone(f._id)),
+        ).then((resp) => {
+          resp.forEach((_, index) => this.onFeedbackDone(allFeedbacks[index].id));
+        });
       };
     } else {
       swalOptions.text = 'Vei suprascrie toate folderele și fișierele existente';
@@ -544,7 +577,7 @@ class MonacoBase extends React.Component<any, any> {
         e.target.value = null;
       }
     });
-  }
+  };
 }
 
 export default MonacoBase;

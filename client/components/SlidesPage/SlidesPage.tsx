@@ -1,6 +1,6 @@
 import React from 'react';
 import PageContainer from '~/components/PageContainer';
-import { SlidesLink } from './SlidesLink/SlidesLink';
+import SlidesLink from './SlidesLink/SlidesLink';
 
 import styles from './SlidesPage.module.scss';
 

@@ -55,4 +55,4 @@ function SlidesLink({
   );
 }
 
-export { SlidesLink };
+export default SlidesLink;

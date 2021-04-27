@@ -16,7 +16,7 @@ function NoSubmissionsYet() {
     <PageContainer className={styles['no-submissions-yet']}>
       <h1> Vreau să ajut</h1>
       <h2>
-        Ne bucuram ca-ti place ideea si ca vrei sa te implici. Uite cele 3 moduri prin care o poti 
+        Ne bucuram ca-ti place ideea si ca vrei sa te implici. Uite cele 3 moduri prin care o poti
         face acum:
       </h2>
       <div className={`${styles['help-wrapper']} d-flex  justify-content-between align-items-center`}>

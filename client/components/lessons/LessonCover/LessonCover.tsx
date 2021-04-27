@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import noop from 'lodash/noop';
 import styles from './LessonCover.module.scss';
 
 // TS missed `ResizeObserver` definitions: https://github.com/Microsoft/TypeScript/issues/28502
@@ -28,6 +29,7 @@ export default function LessonCover(
 
       return () => resizeObserver.disconnect();
     }
+    return noop;
   }, []);
 
   return (

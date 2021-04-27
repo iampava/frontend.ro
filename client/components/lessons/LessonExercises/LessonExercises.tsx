@@ -70,7 +70,7 @@ function LessonExercises({ user, lessonId }: Props & ConnectedProps<typeof conne
     }
   });
 
-  console.log("XXX", mergedData);
+  console.log('XXX', mergedData);
 
   return (
     <div className={`${styles.exercises} ${exercises.length === 0 ? styles['exercises--empty'] : ''}`}>

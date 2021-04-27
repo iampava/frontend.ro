@@ -122,7 +122,7 @@ function GitGithubChallenge({ user }: ConnectedProps<typeof connector>) {
       <p>
         Dacă ai ajuns la acestă pagină înseamnă că faci parte
         din grupul de Alpha Testeri care ne ajută cu feedback,
-        sau ne-ai stalkuit pe repo-ul din GitHub să vezi cum 
+        sau ne-ai stalkuit pe repo-ul din GitHub să vezi cum
         se numesc rutele 👀
       </p>
       <p>

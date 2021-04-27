@@ -228,13 +228,13 @@ class FileSwitcher extends React.Component<Props, State> {
     );
   }
 
-  onResize = ({ dx }) => {
+  onResize = ({ dx, onResize }) => {
     let newWidth = Number(this.fileSwitcherRef.current.style.width.split('px')[0]) + dx;
     newWidth = Math.min(Math.max(newWidth, MIN_WIDTH_PX), window.innerWidth / 2);
 
     this.fileSwitcherRef.current.style.width = `${newWidth}px`;
 
-    this.props.onResize(newWidth);
+    onResize(newWidth);
   }
 
   deleteFileOrFolder(key) {

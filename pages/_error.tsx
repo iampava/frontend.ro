@@ -1,4 +1,7 @@
-function Error({ statusCode }) {
+interface Props {
+  statusCode: number
+}
+function Error({ statusCode }: Props) {
   return (
     <p>
       {statusCode
@@ -9,7 +12,17 @@ function Error({ statusCode }) {
 }
 
 Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  // const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  let statusCode = res ? res.statusCode : 404;
+
+  if (res) {
+    statusCode = res.statusCode;
+  } else if (err) {
+    statusCode = err.statusCode;
+  } else {
+    statusCode = 404;
+  }
+
   return { statusCode };
 };
 
