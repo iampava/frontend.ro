@@ -66,12 +66,13 @@ export const LESSONS: LessonDescription[] = [
   /** HTML lessons */
   {
     id: 'despre-html',
-    written: false,
+    written: true,
     title: 'Despre HTML',
     description:
       'Învață principiile de bază ale acestui limbaj și scrie primele linii de cod.',
     url: '/html/despre-html',
     type: 'html',
+    contributors: [CatalinPopusoi],
   },
   {
     id: 'structura-pagina-html',
