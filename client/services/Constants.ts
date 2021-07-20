@@ -128,11 +128,13 @@ export const LESSONS: LessonDescription[] = [
   },
   {
     id: 'containere',
-    written: false,
+    written: true,
     title: 'Containere',
     description:
       'Am parcurs câteva elemente de bază, dar nu am vorbit despre cum le organizăm pentru a crea layout-uri mai complexe.',
     url: '/html/containere',
+    contributors: [Pava],
+    cover: '/images/lessons/containers/lesson-gallery__cover.png',
     type: 'html',
   },
   {
